@@ -7,7 +7,6 @@ use function OndrejFuhrer\println;
 
 class Day4 extends AdventOfCode
 {
-	private const DEBUG = false;
 	private array $requiredFields = [
 		'byr',
 		'iyr',
@@ -105,14 +104,12 @@ class Day4 extends AdventOfCode
 				$valid = preg_match('/^(\d+)(cm|in)$/', $value, $matches);
 				if (!$valid) {
 					$result = false;
+				} else if ($matches[2] === 'cm') {
+					$result = $matches[1] >= 150 && $matches[1] <= 193;
+				} elseif ($matches[2] === 'in') {
+					$result = $matches[1] >= 59 && $matches[1] <= 76;
 				} else {
-					if ($matches[2] === 'cm') {
-						$result = $matches[1] >= 150 && $matches[1] <= 193;
-					} elseif ($matches[2] === 'in') {
-						$result = $matches[1] >= 59 && $matches[1] <= 76;
-					} else {
-						$result = false;
-					}
+					$result = false;
 				}
 				break;
 			case 'hcl':
@@ -185,13 +182,6 @@ class Day4 extends AdventOfCode
 	private function getAllFields(): array
 	{
 		return $this->requiredFields + ['cid'];
-	}
-
-	private function debug(string $message): void
-	{
-		if (self::DEBUG) {
-			println($message);
-		}
 	}
 }
 

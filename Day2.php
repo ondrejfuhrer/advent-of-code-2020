@@ -7,8 +7,6 @@ use function OndrejFuhrer\println;
 
 class Day2 extends AdventOfCode
 {
-	private const DEBUG = false;
-
 	protected function prepareData(): array
 	{
 		return array_map(
@@ -87,14 +85,12 @@ class Day2 extends AdventOfCode
 
 	private function printResultCheck(array $row, bool $isValid): void
 	{
-		if (self::DEBUG) {
-			println(sprintf(
-				"Password '%s' test against '%s': %s",
-				$row['password'],
-				$row['policy'],
-				$isValid ? "true" : "false"
-			));
-		}
+		$this->debug(sprintf(
+			"Password '%s' test against '%s': %s",
+			$row['password'],
+			$row['policy'],
+			$isValid ? "true" : "false"
+		));
 	}
 
 	private function parsePolicy(string $policy): array

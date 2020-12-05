@@ -11,6 +11,7 @@ function println(string $line = ''): void
 
 abstract class AdventOfCode
 {
+	private const DEBUG = false;
 	protected array $data;
 
 	public function __construct(string $inputFile)
@@ -29,6 +30,13 @@ abstract class AdventOfCode
 		$data = $this->prepareData();
 		$this->executePart1($data);
 		$this->executePart2($data);
+	}
+
+	protected function debug(string $message): void
+	{
+		if (self::DEBUG) {
+			println($message);
+		}
 	}
 
 	private function printHeader(): void
