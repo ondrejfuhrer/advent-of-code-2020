@@ -33,3 +33,7 @@ https://adventofcode.com/2020/day/2
 ## Day 3: Toboggan Trajectory
  
 https://adventofcode.com/2020/day/3
+
+## Day 4: Passport Processing
+
+https://adventofcode.com/2020/day/4
