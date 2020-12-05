@@ -6,7 +6,9 @@ namespace OndrejFuhrer;
 
 function println(string $line = ''): void
 {
-	echo $line.PHP_EOL;
+	$isCli = ( PHP_SAPI === 'cli' );
+	$newLine = $isCli ? PHP_EOL : '';
+	echo sprintf('%s%s%s%s', $isCli ? '' : '<pre>', $line, $isCli ? '' : '</pre>', $newLine);
 }
 
 abstract class AdventOfCode
