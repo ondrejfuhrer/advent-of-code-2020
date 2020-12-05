@@ -45,20 +45,17 @@ class Day4 extends AdventOfCode
 				$validPasswords++;
 			}
 		}
-		println('--- PART 1 ---');
-		println(sprintf('Number of valid 🎫 passports: %d', $validPasswords));
-		println();
+		println(sprintf('[1/2] Number of valid 🎫 passports: %d', $validPasswords));
 	}
 
 	protected function executePart2(array $data): void
 	{
-		println('--- PART 2 ---');
 		$passports = $this->parsePassportData($data);
 		$validPasswords = 0;
 		foreach ($passports as $i => $passport) {
 			$missingFields = [];
 			$invalidFields = [];
-			println(sprintf('🎫 Passport %d:', $i + 1));
+			$this->debug(sprintf('🎫 Passport %d:', $i + 1));
 			foreach ($this->getAllFields() as $field) {
 				$found = false;
 				foreach ($passport as $passportData) {
@@ -81,10 +78,10 @@ class Day4 extends AdventOfCode
 			if ($isValid) {
 				$validPasswords++;
 			}
-			println(sprintf(' - Result:%s', $isValid ? "\033[1;32m valid \033[0m" : "\033[1;31m invalid \033[0m"));
+			$this->debug(sprintf(' - Result:%s', $isValid ? "\033[1;32m valid \033[0m" : "\033[1;31m invalid \033[0m"));
 		}
 		println();
-		println(sprintf('Number of valid 🎫 passports: %d', $validPasswords));
+		println(sprintf('[2/2] Number of valid 🎫 passports: %d', $validPasswords));
 	}
 
 	private function validateValue(string $identifier, $value): bool
