@@ -45,3 +45,7 @@ https://adventofcode.com/2020/day/5
 ## Day 6: Custom Customs
 
 https://adventofcode.com/2020/day/6
+
+## Day 7: Handy Haversacks
+
+https://adventofcode.com/2020/day/7
