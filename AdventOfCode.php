@@ -13,7 +13,7 @@ function println(string $line = ''): void
 
 abstract class AdventOfCode
 {
-	private const DEBUG = false;
+	private const DEBUG = true;
 	protected array $data;
 
 	public function __construct(string $inputFile)
@@ -54,7 +54,11 @@ abstract class AdventOfCode
 	private function getProgress(): string
 	{
 		$className = static::class;
-		$day = substr($className, -1);
+		if (preg_match('/Day(\d+)/i', $className, $matches)) {
+			$day = $matches[1];
+		} else {
+			$day = substr($className, -1);
+		}
 
 		return str_pad($day, 2, '0', STR_PAD_LEFT);
 	}
